@@ -1,0 +1,29 @@
+# docker compose version
+version: "3.7"
+
+services:
+  # create item-app service
+  item-app:
+    image: arifnd/item-app:v1
+    ports:
+      # expose port 8080 from port 80
+      - 80:8080
+    deploy:
+      restart_policy:
+        # alway restart on stop
+        condition: always
+
+  # create item-dv service
+  item-db:
+    image: mongo:3
+    volumes:
+      # mount app-db volume to /data/db
+      - app-db:/data/db
+    deploy:
+      restart_policy:
+        # alway restart on stop
+        condition: always
+
+volumes:
+  # create volumes
+  app-db:
