@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # build docker image
-docker build -t arifnd/karsajobs:latest .
+docker build -t ghcr.io/arifnd/karsajobs:latest .
 
-
-# login to docker hub
-echo $PASSWORD_DOCKER_HUB | docker login -u arifnd --password-stdin
+# login to github container registry
+echo $GHCR_TOKEN | docker login ghcr.io -u arifnd --password-stdin
 
 # push images
-docker push arifnd/karsajobs:latest
+docker push ghcr.io/arifnd/karsajobs:latest
