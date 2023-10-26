@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karsajob
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: karsajob
+  template:
+    metadata:
+      labels:
+        app: karsajob
+    spec:
+      containers:
+        - name: karsajob
+          image: ghcr.io/arifnd/karsajobs:latest
+          env:
+          - name: APP_PORT
+            value: 8080
+          - name: MONGO_HOST
+            value:
+          - name: MONGO_ROOT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mongodb-secret
+                key: username
+          - name: MONGO_ROOT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mongodb-secret
+                key: password
+          
