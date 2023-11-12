@@ -17,17 +17,16 @@ spec:
           image: ghcr.io/arifnd/karsajobs:latest
           env:
           - name: APP_PORT
-            value: 8080
+            value: "8080"
           - name: MONGO_HOST
-            value:
-          - name: MONGO_ROOT_USERNAME
+            value: $(MONGODB_SERVICE_HOST)
+          - name: MONGO_USER
             valueFrom:
               secretKeyRef:
-                name: mongodb-secret
-                key: username
-          - name: MONGO_ROOT_USERNAME
+                name: mongo-secret
+                key: MONGO_ROOT_USERNAME
+          - name: MONGO_PASS
             valueFrom:
               secretKeyRef:
-                name: mongodb-secret
-                key: password
-          
+                name: mongo-secret
+                key: MONGO_ROOT_PASSWORD

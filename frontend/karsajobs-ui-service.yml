@@ -2,9 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: karsajobs-ui
+  labels:
+    app: karsajobs
 spec:
   ports:
   - port: 8000
+    targetPort: 8000
+    nodePort: 30001
   selector:
-    app: karsajobs-ui
-  clusterIP: None
+    app: karsajobs
+  type: NodePort

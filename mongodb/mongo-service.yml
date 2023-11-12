@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: mongodb
   labels:
-    app: mongodb
+    app: karsajobs
 spec:
   ports:
-    - port: 27017
+   - port: 27017
   selector:
-    app: mongodb
+    app: karsajobs
     tier: data
   clusterIP: None
