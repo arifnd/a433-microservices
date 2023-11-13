@@ -26,4 +26,4 @@ COPY . .
 EXPOSE 3001
 
 # Define the command to start the Node.js application
-CMD [ "npm", "run", "start" ]
+CMD [ "node", "index.js" ]
