@@ -1,6 +1,15 @@
 # Use the Node.js 14.21 Alpine image as the base image
 FROM node:14.21-alpine as builder
 
+# Install bash
+RUN apk add --no-cache bash
+
+# download wait-for-it.sh
+RUN wget -O /bin/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
+
+# Make wait-for-it.sh executable
+RUN chmod +x /bin/wait-for-it.sh
+
 # Set the working directory in the container to /app
 WORKDIR /app
 
