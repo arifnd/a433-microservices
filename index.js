@@ -23,9 +23,6 @@ async function connectToQueue() {
         });
     } catch (ex) {
         console.error(ex);
-
-	// Try re-connect after 1 seconds
-	setTimeout(connectToQueue, 1000);
     }
 }
 
