@@ -23,6 +23,9 @@ async function connectToQueue() {
         });
     } catch (ex) {
         console.error(ex);
+
+	// Exit the program with an error code (1)
+	process.exit(1);
     }
 }
 
