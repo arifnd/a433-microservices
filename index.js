@@ -13,17 +13,14 @@ var channel, connection;
 connectToQueue();
 
 async function connectToQueue() {
+    connection = await amqp.connect(amqpServer);
+    channel = await connection.createChannel();
     try {
-        connection = await amqp.connect(amqpServer);
-        channel = await connection.createChannel();
         const queue = "order";
         await channel.assertQueue(queue);
         console.log("Connected to the queue!")
     } catch (ex) {
         console.error(ex);
-
-	// Try re-connect after 1 seconds
-	setTimeout(connectToQueue, 1000);
     }
 }
 
@@ -48,4 +45,3 @@ const createOrder = async order => {
 app.listen(process.env.PORT, () => {
     console.log(`Server running at ${process.env.PORT}`);
 });
-
