@@ -24,8 +24,8 @@ async function connectToQueue() {
     } catch (ex) {
         console.error(ex);
 
-	// Exit the program with an error code (1)
-	process.exit(1);
+	// Try re-connect after 1 seconds
+	setTimeout(connectToQueue, 1000);
     }
 }
 
